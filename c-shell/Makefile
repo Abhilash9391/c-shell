@@ -13,7 +13,8 @@ TARGET = shell.out
 
 SRC = src/main.c \
       src/prompt.c \
-      src/input.c
+      src/input.c \
+      src/lexer.c
 
 OBJ = $(SRC:.c=.o)
 

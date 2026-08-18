@@ -1,4 +1,5 @@
 #include "input.h"
+#include "lexer.h"
 #include "prompt.h"
 
 #include <stdio.h>
@@ -17,11 +18,15 @@ int main(void)
             break;
         }
 
-        /*
-         * A2:
-         * We only consume the input for now.
-         * Execution will be implemented later.
-         */
+        Token *tokens = lex_line(line);
+
+        if (tokens == NULL) {
+            printf("cshell: invalid syntax\n");
+        } else {
+            print_tokens(tokens);
+            free_tokens(tokens);
+        }
+
         free(line);
     }
 
