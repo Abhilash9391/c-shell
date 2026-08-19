@@ -1,6 +1,7 @@
 #include "input.h"
 #include "lexer.h"
 #include "prompt.h"
+#include "parser.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -23,7 +24,9 @@ int main(void)
         if (tokens == NULL) {
             printf("cshell: invalid syntax\n");
         } else {
-            print_tokens(tokens);
+            if (!check_syntax(tokens, LINE)) {
+        printf("cshell: invalid syntax\n");
+    }
             free_tokens(tokens);
         }
 
