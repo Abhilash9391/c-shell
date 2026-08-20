@@ -17,6 +17,7 @@ void router(Token *tokens)
     } else if (strcmp(command, "peek") == 0) {
 
     } else if (strcmp(command, "reveal") == 0) {
+        reveal_handler(tokens->next);
 
     } else if (strcmp(command, "locate") == 0) {
 
