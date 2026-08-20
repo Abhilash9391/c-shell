@@ -1,4 +1,5 @@
 #include "prompt.h"
+#include "shell.h"
 
 #include <pwd.h>
 #include <stdio.h>
@@ -11,6 +12,8 @@ static char *shell_home = NULL;
 void init_prompt(void)
 {
     shell_home = getcwd(NULL, 0);
+    shell.home_directory = shell_home;
+
 
     if (shell_home == NULL) {
         perror("getcwd");

@@ -15,7 +15,14 @@ SRC = src/main.c \
       src/prompt.c \
       src/input.c \
       src/lexer.c \
-      src/parser.c
+      src/parser.c \
+      src/router.c \
+      src/shell.c \
+      src/hop.c \
+      src/peek.c \
+      src/reveal.c \
+      src/locate.c
+      
 
 OBJ = $(SRC:.c=.o)
 

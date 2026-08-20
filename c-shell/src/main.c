@@ -2,6 +2,7 @@
 #include "lexer.h"
 #include "prompt.h"
 #include "parser.h"
+#include "router.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,8 +26,11 @@ int main(void)
             printf("cshell: invalid syntax\n");
         } else {
             if (!check_syntax(tokens, LINE)) {
-        printf("cshell: invalid syntax\n");
-    }
+                printf("cshell: invalid syntax\n");
+            } else {
+                router(tokens);
+            }
+
             free_tokens(tokens);
         }
 
