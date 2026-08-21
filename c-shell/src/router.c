@@ -15,6 +15,7 @@ void router(Token *tokens)
         hop_handler(tokens->next);
 
     } else if (strcmp(command, "peek") == 0) {
+        peek_handler(tokens->next);
 
     } else if (strcmp(command, "reveal") == 0) {
         reveal_handler(tokens->next);
