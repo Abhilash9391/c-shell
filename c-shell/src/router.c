@@ -21,6 +21,7 @@ void router(Token *tokens)
         reveal_handler(tokens->next);
 
     } else if (strcmp(command, "locate") == 0) {
+        locate_handler(tokens->next);
 
     }else{
 
