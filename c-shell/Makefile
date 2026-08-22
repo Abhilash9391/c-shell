@@ -22,7 +22,11 @@ SRC = src/main.c \
       src/peek.c \
       src/reveal.c \
       src/locate.c \
-      src/path_utils.c
+      src/path_utils.c \
+      src/arbitrary/arbitrary.c \
+      src/arbitrary/command.c \
+      src/arbitrary/redirection.c \
+      src/arbitrary/pipeline.c
       
 
 OBJ = $(SRC:.c=.o)

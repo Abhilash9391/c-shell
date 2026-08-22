@@ -4,6 +4,7 @@
 #include "peek.h"
 #include "locate.h"
 #include "reveal.h"
+#include "arbitrary.h"
 
 #include <string.h>
 
@@ -23,9 +24,7 @@ void router(Token *tokens)
     } else if (strcmp(command, "locate") == 0) {
         locate_handler(tokens->next);
 
-    }else{
-
-        builtin_handler(tokens->next);
-
+    } else {
+        arbitrary_handler(tokens);
     }
 }
