@@ -25,5 +25,7 @@ void router(Token *tokens)
 
     }else{
 
+        builtin_handler(tokens->next);
+
     }
 }
