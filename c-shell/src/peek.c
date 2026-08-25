@@ -323,16 +323,8 @@ static void read_reverse_buffered(
                         new_capacity * sizeof(*lines)
                     );
 
-                    bool *new_newlines = realloc(
-                        newlines,
-                        new_capacity * sizeof(*newlines)
-                    );
-
-                    if (new_lines == NULL || new_newlines == NULL) {
+                    if (new_lines == NULL) {
                         perror("realloc");
-
-                        free(new_lines);
-                        free(new_newlines);
                         free(current_line);
 
                         for (size_t j = 0; j < count; j++) {
@@ -345,6 +337,25 @@ static void read_reverse_buffered(
                     }
 
                     lines = new_lines;
+
+                    bool *new_newlines = realloc(
+                        newlines,
+                        new_capacity * sizeof(*newlines)
+                    );
+
+                    if (new_newlines == NULL) {
+                        perror("realloc");
+                        free(current_line);
+
+                        for (size_t j = 0; j < count; j++) {
+                            free(lines[j]);
+                        }
+
+                        free(lines);
+                        free(newlines);
+                        return;
+                    }
+
                     newlines = new_newlines;
                     capacity = new_capacity;
                 }
@@ -429,16 +440,8 @@ static void read_reverse_buffered(
                 new_capacity * sizeof(*lines)
             );
 
-            bool *new_newlines = realloc(
-                newlines,
-                new_capacity * sizeof(*newlines)
-            );
-
-            if (new_lines == NULL || new_newlines == NULL) {
+            if (new_lines == NULL) {
                 perror("realloc");
-
-                free(new_lines);
-                free(new_newlines);
                 free(current_line);
 
                 for (size_t j = 0; j < count; j++) {
@@ -451,6 +454,25 @@ static void read_reverse_buffered(
             }
 
             lines = new_lines;
+
+            bool *new_newlines = realloc(
+                newlines,
+                new_capacity * sizeof(*newlines)
+            );
+
+            if (new_newlines == NULL) {
+                perror("realloc");
+                free(current_line);
+
+                for (size_t j = 0; j < count; j++) {
+                    free(lines[j]);
+                }
+
+                free(lines);
+                free(newlines);
+                return;
+            }
+
             newlines = new_newlines;
             capacity = new_capacity;
         }
